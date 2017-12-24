@@ -1,0 +1,136 @@
+<p-chart type="line" [data]="data1" [options]="options"></p-chart>
+
+<button pButton
+        type="button"
+        (click)="callCalibrate()"
+        icon="fa-check"
+        iconPos="right"
+        label="Calibrate"
+        [disabled]="!calibrationNeeded"
+        style=" background: purple;
+                border: none;
+                font-size: 15px;"
+></button>
+
+<p-toggleButton onLabel="Enable" offLabel="Disable"
+                onIcon="fa-check-square" offIcon="fa-square" [(ngModel)]="enableMotor" (click)="toggleEngine()" ></p-toggleButton>
+
+
+<p-toggleButton onLabel="Clock-Wise" offLabel="Counter-Clock-Wise"
+                onIcon="fa-check-square" offIcon="fa-square" [(ngModel)]="enableMotorDir" (click)="toggleDirection()" ></p-toggleButton>
+
+
+
+<div class="ui-g">
+
+</div>
+<div class="ui-g">
+  <div class="ui-g-4">
+    <h2>Axis 1</h2>
+  </div>
+  <div class="ui-g-4">
+    <h2>Axis 2</h2>
+  </div>
+  <div class="ui-g-4">
+    <h2>Axis 3</h2>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-g-4">
+    <ngx-gauge [type]="speedGaugeType"
+               [value]="sensor1"
+               [label]="speedGaugeLabel"
+               [append]="speedGaugeAppendText"
+               size="150"
+               foregroundColor="	#a048fd"
+               thick="10"
+               backgroundColor="#353535"
+    >
+    </ngx-gauge>
+  </div>
+  <div class="ui-g-4">
+    <ngx-gauge [type]="speedGaugeType"
+               [value]="sensor2"
+               [label]="speedGaugeLabel"
+               [append]="speedGaugeAppendText"
+               size="150"
+               foregroundColor="	#14a3fe"
+               thick="10"
+               backgroundColor="#353535"
+    >
+    </ngx-gauge>
+  </div>
+  <div class="ui-g-4">
+    <ngx-gauge [type]="speedGaugeType"
+               [value]="sensor3"
+               [label]="speedGaugeLabel"
+               [append]="speedGaugeAppendText"
+               size="150"
+               foregroundColor="#ff00d2ba"
+               thick="10"
+               backgroundColor="#353535"
+
+    >
+    </ngx-gauge>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-g-4">
+    <ngx-gauge [type]="torqueGaugeType"
+               [value]="val"
+               [label]="torqueGaugeLabel"
+               [append]="torqueGaugeAppendText"
+               size="150"
+               foregroundColor="#a048fd"
+               thick="10"
+               backgroundColor="#353535"
+    >
+    </ngx-gauge>
+  </div>
+  <div class="ui-g-4">
+    <ngx-gauge [type]="torqueGaugeType"
+               [value]="val"
+               [label]="torqueGaugeLabel"
+               [append]="torqueGaugeAppendText"
+               size="150"
+               foregroundColor="#14a3fe"
+               thick="10"
+               backgroundColor="#353535"
+    >
+    </ngx-gauge>
+  </div>
+  <div class="ui-g-4">
+    <ngx-gauge [type]="torqueGaugeType"
+               [value]="val"
+               [label]="torqueGaugeLabel"
+               [append]="torqueGaugeAppendText"
+               size="150"
+               foregroundColor="#ff00d2ba"
+               thick="10"
+               backgroundColor="#353535"
+    >
+    </ngx-gauge>
+  </div>
+</div>
+
+
+<div class="container" style="display:inline">
+  <div class="row">
+    <div class="col-6" style="display:flex;margin-left: calc(50% - 100px);">
+      <ngx-gauge [type]="gaugeType"
+                 [value]="val"
+                 [label]="gaugeLabel"
+                 [append]="gaugeAppendText"
+                 foregroundColor="#b30a00e6"
+                 thick="10"
+                 backgroundColor="#353535"
+      >
+      </ngx-gauge>
+      <div class="col-6">
+        <p-slider [(ngModel)]="val" orientation="vertical" [style]="{'height':'190px'}" (onSlideEnd)="setSpeed()" ></p-slider>
+      </div>
+    </div>
+  </div>
+</div>
